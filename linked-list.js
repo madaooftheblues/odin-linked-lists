@@ -22,6 +22,7 @@ function LinkedList() {
 
         _size++
     }
+
     function prepend(value) {
         const node = createNode(value)
 
@@ -35,7 +36,19 @@ function LinkedList() {
 
         _size++
     }
-    function at(index) {}
+
+    function at(index) {
+        if (this.head === null) return
+        if (index < 0) return this.head
+
+        let temp = this.head
+        for (let i = 0; temp !== null && i < index; i++) temp = temp.nextNode
+
+        if (temp === null) return this.tail
+
+        return temp
+    }
+
     function pop() {}
     function contains(value) {}
     function find(value) {}
@@ -65,12 +78,3 @@ function LinkedList() {
         toString,
     }
 }
-
-const l = LinkedList()
-l.prepend(3)
-l.prepend(3)
-l.prepend(3)
-l.prepend(3)
-l.append(5)
-l.prepend(6)
-console.log(l.toString())
