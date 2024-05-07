@@ -19,9 +19,22 @@ function LinkedList() {
             this.tail.nextNode = node
             this.tail = node
         }
+
         _size++
     }
-    function prepend(value) {}
+    function prepend(value) {
+        const node = createNode(value)
+
+        if (this.head === null) {
+            this.head = node
+            this.tail = node
+        } else {
+            node.nextNode = this.head
+            this.head = node
+        }
+
+        _size++
+    }
     function at(index) {}
     function pop() {}
     function contains(value) {}
@@ -30,7 +43,6 @@ function LinkedList() {
         let out = ''
         let temp = this.head
         while (temp !== null) {
-            console.log(temp)
             out = out + `(${temp.value}) -> `
             temp = temp.nextNode
         }
@@ -53,3 +65,12 @@ function LinkedList() {
         toString,
     }
 }
+
+const l = LinkedList()
+l.prepend(3)
+l.prepend(3)
+l.prepend(3)
+l.prepend(3)
+l.append(5)
+l.prepend(6)
+console.log(l.toString())
