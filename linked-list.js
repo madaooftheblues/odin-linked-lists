@@ -77,7 +77,19 @@ function LinkedList() {
         return false
     }
 
-    function find(value) {}
+    function find(value) {
+        if (this.head.value === value) return this.head
+        if (this.tail.value === value) return this.tail
+
+        let temp = this.head.nextNode
+        while (temp.nextNode !== null) {
+            if (temp.value === value) return temp
+            temp = temp.nextNode
+        }
+
+        return null
+    }
+
     function toString() {
         let out = ''
         let temp = this.head
