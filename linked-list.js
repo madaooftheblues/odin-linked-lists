@@ -78,13 +78,12 @@ function LinkedList() {
     }
 
     function find(value) {
-        if (this.head.value === value) return this.head
-        if (this.tail.value === value) return this.tail
+        if (this.head.value === value) return 0
+        if (this.tail.value === value) return _size - 1
 
         let temp = this.head.nextNode
-        while (temp.nextNode !== null) {
-            if (temp.value === value) return temp
-            temp = temp.nextNode
+        for (let i = 1; temp.nextNode != null; i++, temp = temp.nextNode) {
+            if (temp.value === value) return i
         }
 
         return null
