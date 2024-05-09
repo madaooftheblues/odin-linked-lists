@@ -64,7 +64,19 @@ function LinkedList() {
         _size--
     }
 
-    function contains(value) {}
+    function contains(value) {
+        if (this.head.value === value) return true
+        if (this.tail.value === value) return true
+
+        let temp = this.head.nextNode
+        while (temp.nextNode !== null) {
+            if (temp.value === value) return true
+            temp = temp.nextNode
+        }
+
+        return false
+    }
+
     function find(value) {}
     function toString() {
         let out = ''
