@@ -89,6 +89,27 @@ function LinkedList() {
         return null
     }
 
+    function insertAt(value, index) {
+        if (index <= 0) {
+            this.prepend(value)
+            return
+        }
+        if (index >= _size) {
+            this.append(value)
+            return
+        }
+
+        const node = createNode(value)
+        let temp = this.head.nextNode
+        for (let i = 1; i < index - 1; i++) {
+            temp = temp.nextNode
+        }
+        node.nextNode = temp.nextNode
+        temp.nextNode = node
+
+        _size++
+    }
+
     function toString() {
         let out = ''
         let temp = this.head
@@ -112,6 +133,7 @@ function LinkedList() {
         pop,
         contains,
         find,
+        insertAt,
         toString,
     }
 }
