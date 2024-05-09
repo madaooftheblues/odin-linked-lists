@@ -110,6 +110,35 @@ function LinkedList() {
         _size++
     }
 
+    function removeAt(index) {
+        if (this.head === null) return
+
+        if (index <= 0) {
+            if (this.head.nextNode === null) {
+                this.head = null
+                this.tail = null
+            } else {
+                this.head = this.head.nextNode
+            }
+            _size--
+            return
+        }
+
+        if (index >= _size - 1) {
+            this.pop()
+            return
+        }
+
+        let temp = this.head
+        for (let i = 0; i < index - 1; i++) {
+            temp = temp.nextNode
+        }
+
+        temp.nextNode = temp.nextNode.nextNode
+
+        _size--
+    }
+
     function toString() {
         let out = ''
         let temp = this.head
@@ -134,6 +163,7 @@ function LinkedList() {
         contains,
         find,
         insertAt,
+        removeAt,
         toString,
     }
 }
