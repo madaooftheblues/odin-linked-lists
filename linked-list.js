@@ -49,7 +49,21 @@ function LinkedList() {
         return temp
     }
 
-    function pop() {}
+    function pop() {
+        if (this.head === null) return
+        if (this.head.nextNode === null) {
+            this.head = null
+            this.tail = null
+        } else {
+            let temp = this.head
+            while (temp.nextNode.nextNode !== null) temp = temp.nextNode
+            temp.nextNode = null
+            this.tail = temp
+        }
+
+        _size--
+    }
+
     function contains(value) {}
     function find(value) {}
     function toString() {
